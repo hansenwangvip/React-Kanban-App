@@ -2,7 +2,7 @@ import React from 'react';
 import KanbanBoard from './KanbanBoard';
 import ReactDOM from 'react-dom';
 
-var cardsList = [
+let cardsList = [
   {
     id : 1,
     title : "Read the Book",
@@ -23,7 +23,7 @@ var cardsList = [
       },
       {
         id: 2,
-        name: " Kanban Example",
+        name: "Kanban Example",
         done: false
       },
       {
