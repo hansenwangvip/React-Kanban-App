@@ -1,0 +1,112 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body, #app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #eee;
+
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+h1 {
+  color: #3b414c;
+
+  font-size: 20px;
+  font-weight: 200;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+
+  list-style-type: none;
+}
+
+#root {
+  height: 100%;
+
+  white-space: nowrap;
+}
+
+.list {
+  position: relative;
+
+  display: inline-block;
+  overflow: auto;
+
+  width: 33%;
+  height: 100%;
+  padding: 0 20px;
+
+  vertical-align: top;
+  white-space: normal;
+}
+
+.list:not(:last-child):after {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  width: 1px;
+  height: 99%;
+
+  content: "";
+
+  background: #ccc;
+}
+
+.card {
+  z-index: 1;
+
+  overflow: auto;
+
+  width: 100%;
+  margin: 0 0 10px 0;
+  padding: 10px 10px 10px 15px;
+
+  border: 1px solid #e5e5df;
+  border-radius: 3px;
+  background: #fff;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+
+  position: relative;
+}
+
+.card_title {
+  border-bottom: 5px solid transparent;
+
+  font-weight: bold;
+}
+
+.card_title:before {
+  display: inline-block;
+
+  width: 1em;
+
+  content: '▲'；
+}
+
+.card_title--is--open:before {
+  content: '▽';
+}
+
+.checklist_task:first-child {
+  margin-top: 10px;
+  padding-top: 10px;
+
+  border-top: dashed 1px #ddd;
+}
+
+.checklist_task--remove:after {
+  display: inline-block;
+
+  content: '+';
+
+  color: #d66;
+}
