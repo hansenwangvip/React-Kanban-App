@@ -39,7 +39,7 @@ ul {
 .list {
 	position       : relative;
 	display        : inline-block;
-	overflow       : hidden;
+	overflow-y: auto;
 	background     : linear-gradient(to bottom right ,#bbb 0%,#888 60%, #333 100%);
 	width          : 33%;
 	height         : 80%;
@@ -56,7 +56,6 @@ ul {
 	}
 }
 
-
 .list:not(:last-child):after {
 	position   : absolute;
 	top        : 0;
@@ -65,6 +64,7 @@ ul {
 	width :1px;
 	content    : "";
 }
+
 
 .card {
 	z-index       : 1;
@@ -85,19 +85,19 @@ ul {
 	}
 }
 
-
+.card_details{
+	margin-left: 10px;
+}
 
 .card_title {
 	padding: 15px;
-	font-weight   : lighter;
+	font-weight   : 400;
+	font-size: 1.2em;
+	outline: none;
 	
-	
-	background: #8096AC;
-	color: #fff;
-	border: 0;
+	color: #344;
 	border-radius: inherit;
 	&:hover{
-		background : #85C4C4;
 	}
 }
 
@@ -105,12 +105,13 @@ ul {
 	display : inline-block;
 	margin-right: 10px;
 	width   : 1em;
-	
+	height: 1em;
 	content : '►'
 }
 
 .card_title--is--open:before {
 	width: 1em;
+	height: 1em;
 	content : '▼';
 }
 
@@ -134,4 +135,13 @@ ul {
 	margin-left : 5px;
 	content     : 'x';
 	color       : #D66;
+}
+
+.checklist--add-task{
+	border: 1px dashed #bbb;
+	width: 90%;
+	padding: 10px;
+	font-size: 1em;
+	margin: 10px 5%;
+	border-radius: 3px;
 }
