@@ -3,9 +3,9 @@ import CheckList from './CheckList';
 
 //自定义propTypes校验器
 let titlePropTypes = (props, propName, componentName) => {
-	if(props[propName]){
+	if (props[propName]) {
 		let value = props[propName];
-		if(typeof value !== 'string' || value.length > 80){
+		if (typeof value !== 'string' || value.length > 80) {
 			return new Error(
 				//模板字符串$()
 				'${propName} in ${componentName} is longer than 80 characters!'
@@ -32,9 +32,12 @@ class Card extends Component {
 		if (this.state.showDetails) {
 			cardDetails = (
 				<div className="card_details">
+					
 					{this.props.description}
 					<CheckList cardId={this.props.id}
-					           tasks={this.props.tasks} />
+					           tasks={this.props.tasks}
+					           taskCallbacks={this.props.taskCallbacks}
+					/>
 
 				</div>
 
@@ -73,7 +76,7 @@ class Card extends Component {
 
 Card.propTypes = {
 	id: PropTypes.number,
-	title : titlePropTypes,
+	title: titlePropTypes,
 	description: PropTypes.string,
 	color: PropTypes.string,
 	tasks: PropTypes.arrayOf(PropTypes.object)

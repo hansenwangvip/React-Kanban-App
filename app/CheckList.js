@@ -1,20 +1,32 @@
 import React, {Component, PropTypes} from 'react';
 
 class CheckList extends Component {
-	render() {
-		{/* tasks 是一个li数组。 */
+	checkInputKeyPress(evt){
+		if(evt.key === 'Enter'){
+			this.props.taskCallbacks.add(this.props.cardId, evt.target.value);
+			evt.target.value = '';
 		}
-		let tasks = this.props.tasks.map((task) => (
+	}
+	render() {
+
+		/* tasks 是一个li数组。 */
+		let tasks = this.props.tasks.map((task, taskIndex) => (
 			<li className="checklist_task"
-			    key={task.id}>
+			    key={task.id}
+			>
 				<input type="checkbox"
 				       id={task.name}
-				       defaultChecked={task.done} />
+				       onChange={this.props.taskCallbacks.toggle.bind(null, this.props.cardId, task.id, taskIndex)}
+				       onKeyPress={this.checkInputKeyPress.bind(this)}
+				/>
 				<label htmlFor={task.name}>
-					{task.name}
+					{task.name} {'  '}
 				</label>
 				<a href="#"
-				   className="checklist_task--remove" />
+				   className="checklist_task--remove"
+				   onClick={this.props.taskCallbacks.delete.bind(null, this.props.cardId, task.id, taskIndex)}
+				/>
+
 			</li>
 		));
 
@@ -23,6 +35,7 @@ class CheckList extends Component {
 				<ul>{tasks}</ul>
 				<input type="text"
 				       className="checklist--add-task"
+				       onKeyPress={this.checkInputKeyPress.bind(this)}
 				       placeholder="Type then hit Enter to add a task! " />
 			</div>
 		);
