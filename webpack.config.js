@@ -5,7 +5,7 @@ var webpack = require('webpack');
  */
 var config = {
   devtool: 'eval-source-map',
-  entry:  __dirname + "/app/TodoApp.js",
+  entry:  __dirname + "/app/TodoApp/TodoApp.js",
   output: {
     path: __dirname + "/public",
     filename: "bundle.js"
