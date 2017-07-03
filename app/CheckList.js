@@ -38,13 +38,14 @@ class CheckList extends Component {
 				       onKeyPress={this.checkInputKeyPress.bind(this)}
 				       placeholder="Type then hit Enter to add a task! " />
 			</div>
-		);
+		)
 	}
 }
 
 CheckList.propTypes = {
 	cardId: PropTypes.number,
-	tasks: PropTypes.arrayOf(PropTypes.object)
-}
+	taskCallbacks:PropTypes.object,
+	tasks: PropTypes.array
+};
 
 export default CheckList;
