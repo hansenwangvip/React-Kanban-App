@@ -1,1 +1,0 @@
-import React , {Component , PropTypes} from 'react';import ReactDOM from 'react-dom';import Container from "./Container"class App extends Component{	render(){		<Container />	}}ReactDOM.render( <App/>, document.getElementById("root"));
