@@ -9,7 +9,7 @@ html, body, #root {
   overflow: hidden; }
 
 body {
-  background: #EEE;
+  background: #eee;
   font-family: Helvetica, Arial, sans-serif; }
 
 h1 {
@@ -59,15 +59,33 @@ ul {
   overflow: auto;
   width: 100%;
   margin: 0 0 10px 0;
-  border: 1px solid #E5E5DF;
+  border: 1px solid #e5e5df;
   border-radius: 5px;
-  background: #FFF;
+  background: #fff;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
   position: relative;
   cursor: pointer;
   transition: all 200ms ease; }
   .card:hover {
     box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.3); }
+
+.toggle-enter {
+  max-height: 0;
+  overflow: hidden; }
+
+.toggle-enter.toggle-enter-active {
+  max-height: 300px;
+  overflow: hidden;
+  transition: max-height .25s ease-in; }
+
+.toggle-leave {
+  max-height: 300px;
+  overflow: hidden; }
+
+.toggle-leave.toggle-leave-active {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .25s ease-out; }
 
 .card_details {
   margin-left: 10px; }
@@ -101,13 +119,13 @@ ul {
 .checklist_task:first-child {
   margin-top: 10px;
   padding-top: 10px;
-  border-top: dashed 1px #DDD; }
+  border-top: dashed 1px #ddd; }
 
 .checklist_task--remove:after {
   display: inline-block;
   margin-left: 5px;
   content: 'x';
-  color: #D66; }
+  color: #d66; }
 
 .checklist--add-task {
   border: 1px dashed #bbb;
