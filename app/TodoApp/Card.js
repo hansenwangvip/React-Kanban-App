@@ -51,7 +51,7 @@ class Card extends Component {
 	constructor() {
 		super(...arguments);
 		this.state = {
-			showDetails: true
+			showDetails: false
 		};
 	}
 
