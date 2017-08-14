@@ -2,3 +2,4 @@ node_modules
 projectTemplate
 /.idea/
 /test/
+package-lock.json
