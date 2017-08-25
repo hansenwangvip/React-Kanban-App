@@ -3,3 +3,5 @@ projectTemplate
 /.idea/
 /test/
 package-lock.json
+.DS_store
+/backup/
