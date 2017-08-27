@@ -8,8 +8,6 @@ import KanbanBoard from './components/KanbanBoard';
 import NewCard from './routes/NewCard';
 import EditCard from './routes/EditCard';
 
-import './App.css';
-
 class App extends Component{
 	render(){
 		return(

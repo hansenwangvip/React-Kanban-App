@@ -1,7 +1,15 @@
+# Logs
+logs
+*.log
+
+# Dependency directory
+# https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 node_modules
-projectTemplate
 /.idea/
-/test/
-package-lock.json
-.DS_store
-/backup/
+/build/
+yarn.lock
+LICENSE
+
+
+# OS specific
+.DS_Store
