@@ -21,7 +21,7 @@ let titlePropTypes = (props, propName, componentName) => {
 			)
 		}
 	}
-}
+};
 
 //cardDragSpec
 const cardDragSpec = {
@@ -29,6 +29,9 @@ const cardDragSpec = {
 		return {
 			id: props.id
 		};
+	},
+	endDrag(props){
+		props.cardCallbacks.persistCardDrag(props.id, props.status);
 	}
 };
 //cardDropSpec
@@ -43,13 +46,13 @@ let collectDrag = (connect, monitor) => {
 	return {
 		connectDragSource: connect.dragSource()
 	};
-}
+};
 
 let collectDrop = (connect, monitor) => {
 	return {
 		connectDropTarget: connect.dropTarget()
 	};
-}
+};
 
 class Card extends Component {
 	constructor() {

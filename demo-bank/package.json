@@ -1,0 +1,18 @@
+{
+  "name": "demo-bank",
+  "version": "0.0.1",
+  "homepage": ".",
+  "dependencies": {
+    "fbemitter": "^2.1.1",
+    "flux": "^3.1.3",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  },
+  "devDependencies": {
+    "react-scripts": "^1.0.12"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build"
+  }
+}

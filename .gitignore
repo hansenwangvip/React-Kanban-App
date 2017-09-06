@@ -9,7 +9,8 @@ node_modules
 /build/
 yarn.lock
 LICENSE
-
+/demo-aircheap/node_modules
+/demo-bank/node_modules
 
 # OS specific
 .DS_Store
