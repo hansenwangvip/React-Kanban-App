@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import PropTypes from 'prop-types';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import marked from 'marked';
@@ -7,6 +7,7 @@ import constants from '../consts/consts';
 import CheckList from './CheckList';
 
 import {Link} from 'react-router';
+import CardActionCreators from "../actions/CardActionCreators";
 
 
 //自定义propTypes校验器
@@ -30,15 +31,17 @@ const cardDragSpec = {
 			id: props.id
 		};
 	},
-	endDrag(props){
-		props.cardCallbacks.persistCardDrag(props.id, props.status);
+	endDrag(props) {
+		CardActionCreators.persistCardDrag(props);
 	}
 };
 //cardDropSpec
 const cardDropSpec = {
 	hover(props, monitor) {
 		const draggedId = monitor.getItem().id;
-		props.cardCallbacks.updatePosition(draggedId, props.id);
+		if (props.id !== draggedId) {
+			CardActionCreators.updateCardPosition(draggedId, props.id);
+		}
 	}
 };
 
@@ -63,7 +66,7 @@ class Card extends Component {
 	}
 
 	toggleDetails() {
-		this.setState({showDetails: !this.state.showDetails});
+		CardActionCreators.toggleCardDetails(this.props.id);
 	}
 
 	render() {
@@ -71,7 +74,7 @@ class Card extends Component {
 		const {connectDragSource, connectDropTarget} = this.props;
 
 		let cardDetails;
-		if (this.state.showDetails) {
+		if (this.props.showDetails !== false) {
 			cardDetails = (
 				<div className="card_details">
 
@@ -105,7 +108,7 @@ class Card extends Component {
 					<div className="card_edit">
 						<Link to={'/edit/' + this.props.id}>&#9998;</Link>
 					</div>
-					<div className={this.state.showDetails ? "card_title card_title--is--open" : "card_title"}
+					<div className={this.props.showDetails !== false ? "card_title card_title--is--open" : "card_title"}
 					     onClick={
 						     this.toggleDetails.bind(this)
 					     }>
@@ -127,7 +130,10 @@ Card.propTypes = {
 	id: PropTypes.number,
 	title: PropTypes.string,
 	description: PropTypes.string,
-	tasks: PropTypes.arrayOf(PropTypes.object),
+	tasks: PropTypes.array,
+	status: PropTypes.string,
+	connectDropTarget: PropTypes.func.isRequired,
+	connectDragSource: PropTypes.func.isRequired
 };
 
 const dragHighOrderCard = DragSource(constants.CARD, cardDragSpec, collectDrag)(Card);

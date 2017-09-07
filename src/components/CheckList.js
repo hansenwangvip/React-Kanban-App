@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
+import TaskActionCreators from "../actions/TaskActionCreators";
 class CheckList extends Component {
 	checkInputKeyPress(evt){
 		if(evt.key === 'Enter'){
-			this.props.taskCallbacks.add(this.props.cardId, evt.target.value);
+			let newTask = {id:Date.now(), name:evt.target.value,done:false};
+			TaskActionCreators.addTask(this.props.cardId, newTask);
 			evt.target.value = '';
 		}
 	}
@@ -12,22 +14,21 @@ class CheckList extends Component {
 		/* tasks 是一个li数组。 */
 		let tasks = this.props.tasks.map((task, taskIndex) => (
 			<li className="checklist_task"
-			    key={task.id}
-			>
+			    key={task.id+1}>
 				<input type="checkbox"
 				       id={task.name}
-				       onChange={this.props.taskCallbacks.toggle.bind(null, this.props.cardId, task.id, taskIndex)}
+				       onChange={TaskActionCreators.toggleTask.bind(null, this.props.cardId, task, taskIndex)}
 				       onKeyPress={this.checkInputKeyPress.bind(this)}
 				/>
+				{/*TODO:check label tag*/}
 				<label htmlFor={task.name}>
 					{task.name} {'  '}
 				</label>
 				{/*eslint-disable-next-line*/}
 				<button href="#"
 				   className="checklist_task--remove"
-				   onClick={this.props.taskCallbacks.delete.bind(null, this.props.cardId, task.id, taskIndex)}
+				   onClick={TaskActionCreators.deleteTask.bind(null, this.props.cardId, task, taskIndex)}
 				/>
-
 			</li>
 		));
 
@@ -36,8 +37,9 @@ class CheckList extends Component {
 				<ul>{tasks}</ul>
 				<input type="text"
 				       className="checklist--add-task"
+				       placeholder="Type then hit Enter! "
 				       onKeyPress={this.checkInputKeyPress.bind(this)}
-				       placeholder="Type then hit Enter! " />
+				/>
 			</div>
 		)
 	}
@@ -45,8 +47,7 @@ class CheckList extends Component {
 
 CheckList.propTypes = {
 	cardId: PropTypes.number,
-	taskCallbacks:PropTypes.object,
-	tasks: PropTypes.array
+	tasks: PropTypes.arrayOf(PropTypes.object)
 };
 
 export default CheckList;
