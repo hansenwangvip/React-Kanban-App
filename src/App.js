@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import { Router, Route} from 'react-router';
-import createBrowserHistory from 'history/lib/createBrowserHistory';
+import { hashHistory } from 'react-router';
 
 import KanbanBoardContainer from './components/KanbanBoardContainer';
 import KanbanBoard from './components/KanbanBoard';
@@ -11,7 +11,8 @@ import EditCard from './routes/EditCard';
 class App extends Component{
 	render(){
 		return(
-			<Router history={createBrowserHistory()}>
+			//TODO:检查Router中的history,以避免warning。
+			<Router history={hashHistory}>
 				<Route component={KanbanBoardContainer}>
 					<Route path="/"
 					       component={KanbanBoard}>

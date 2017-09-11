@@ -9,7 +9,9 @@ node_modules
 /build/
 yarn.lock
 LICENSE
+public/bundle.js
 
 
 # OS specific
 .DS_Store
+
